@@ -2,7 +2,18 @@ import re
 
 with open('result.txt',encoding='utf-8')as f:
     data = f.readline()
+
+    print(data[0:15]) # 時間だけを抽出したい
+
     p = r'length(.*)'  # 「length」の後ろにある文字だけを抽出したい
     m = re.search(p, data)
     print(m.group(1))
     int(m.group(1))
+
+    import pickle #　リストに書き込む
+    f = open('list.txt', 'wb')
+    list_row = ['data[0:15]','m.group(1)']
+    pickle.dump(list_row, f) 
+
+    f = open("./list.txt","rb") # リストの表示
+    list_row = pickle.load(f)
