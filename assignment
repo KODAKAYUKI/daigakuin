@@ -1,0 +1,8 @@
+import re
+
+with open('result.txt',encoding='utf-8')as f:
+    data = f.readline()
+    p = r'length(.*)'  # 「length」の後ろにある文字だけを抽出したい
+    m = re.search(p, data)
+    print(m.group(1))
+    int(m.group(1))
