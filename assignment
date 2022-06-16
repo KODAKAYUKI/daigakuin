@@ -12,6 +12,6 @@ with open('result.txt',encoding='utf-8')as f:
     # print(m.group(1))
     int(m.group(1))
 
-list_row = [data[0:15],m.group(1)] 
-list_a.append(list_row)
-print(list_row) 
+    list_row = [data[0:15],int(m.group(1))] 
+    list_a.append(list_row)
+    print(list_row) 
