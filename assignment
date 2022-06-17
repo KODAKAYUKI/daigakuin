@@ -1,17 +1,10 @@
-import re
+import csv
+import pandas as pdp
 
-list_a = []
-
-with open('result.txt',encoding='utf-8')as f:
-    data = f.readline()
-
-    # print(data[0:15]) # 時間だけを抽出したい
-
-    p = r'length(.*)'  # 「length」の後ろにある文字だけを抽出したい
-    m = re.search(p, data)
-    # print(m.group(1))
-    int(m.group(1))
-
-    list_row = [data[0:15],int(m.group(1))] 
-    list_a.append(list_row)
-    print(list_row) 
+with open('result.csv') as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        if 0 < float(row['Time']) < 0.1:
+            print(int(row['Length']))
+            result_sum = sum(int(row['Length']))
+            print(result_sum)
