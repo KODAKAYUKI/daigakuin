@@ -1,0 +1,6 @@
+import pandas as pd
+import csv
+
+
+df = pd.read_csv('result.csv') 
+print(pd.cut(df['Time'], [0,0.1,0.2,0.3,0.4,0.5,691.0], labels=['0','0.1'], precision=1))
