@@ -1,10 +1,13 @@
 import csv
-import pandas as pdp
 
 with open('result.csv') as f:
     reader = csv.DictReader(f)
+    datalist = []
     for row in reader:
         if 0 < float(row['Time']) < 0.1:
-            print(int(row['Length']))
-            result_sum = sum(int(row['Length']))
-            print(result_sum)
+            # print(row['Length'])
+            # print(row['Time'], row['Length'])
+            datalist.append(int(row['Length']))
+        
+    sum = sum(datalist)
+    print(sum)
