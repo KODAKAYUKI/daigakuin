@@ -1,6 +1,13 @@
 import pandas as pd
 import csv
+import numpy
 
 
 df = pd.read_csv('result.csv') 
-print(pd.cut(df['Time'], [0,0.1,0.2,0.3,0.4,0.5,691.0], labels=['0','0.1'], precision=1))
+df.head()
+pd_cut = pd.cut(df.Time, bins=numpy.arange(0, 690.6, 0.1),labels=numpy.arange(0, 690.5, 0.1), precision=1)
+pd_cut_sum = df.groupby(pd_cut).sum()
+# print(pd_cut_sum)
+# print(pd_cut)
+df = pd_cut_sum[["Length"]]
+print(df)
